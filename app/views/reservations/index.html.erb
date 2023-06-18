@@ -1,0 +1,34 @@
+<%= render "shared/header" %>
+
+<div class="container">
+  <h3>予約一覧</h3>
+  
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th></th>
+        <th>施設名</th>
+        <th>施設紹介</th>
+        <th>合計料金</th>
+        <th>チェックイン</th>
+        <th>チェックアウト</th>
+        <th>予約確定日</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @reservations.each do |reservation| %>
+      <tr>
+        <td><%= image_tag reservation.room.image.variant(resize: "100x100>").processed %></td>
+        <td><%= reservation.room.name %></td>
+        <td><%= reservation.room.introduction %></td>
+        <td><%= reservation.total_price %>円</td>
+        <td><%= reservation.check_in_date.strftime("%Y/%m/%d") %></td>
+        <td><%= reservation.check_out_date.strftime("%Y/%m/%d") %></td>
+        <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
+        <td><%= link_to "予約取消",reservation, class: "text-decoration-none", method: :delete, data:{ confirm: "予約を取り消しますか？" } %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

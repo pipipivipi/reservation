@@ -1,0 +1,39 @@
+<%= render "shared/header" %>
+
+<div class="container">
+  <h3>プロフィール</h3>
+
+  <article>
+    <div class="side_menu">
+      <%= link_to "アカウント", users_account_path %>
+      <p>プロフィール</p>
+    </div>
+    <div class="account_container">
+      <table class="table table-striped table-hover">
+          <tr>
+            <th scope="col">アバター</th>
+            <td>
+              <% if @user.avatar.attached? %>
+              <%= image_tag @user.avatar.variant(resize: "50x50>" ).processed %>
+              <% else %>
+              <%= image_tag "app/assets/images/default-avatar.png".variant(resize: "50x50>").processed %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="col">ユーザー名</th>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <th scope="col">プロフィール</th>
+            <td><%= @user.profile %></td>
+          </tr>
+      </table>
+    </div>
+  </article>
+  <div>
+    <ul>
+      <a href="/users/profile/edit" class="btn btn-outline-secondary">編集</a>
+    </ul>
+  </div>
+</div>
