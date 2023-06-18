@@ -17,6 +17,7 @@ class RoomsController < ApplicationController
       flash[:notice] = "施設を新規登録しました"
       redirect_to :rooms
     else
+      flash[:alert] = "登録できませんでした"
       render "new"
     end
   end

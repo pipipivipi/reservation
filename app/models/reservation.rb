@@ -6,7 +6,7 @@ class Reservation < ApplicationRecord
     (check_out_date - check_in_date).to_i * room.price * number_of_people
   end
 
-  validates :number_of_people, numericality: {greater_than_or_equal_to: 1}
+  validates :number_of_people, numericality: {greater_than_or_equal_to: 1}, presence: true
   validates :check_in_date, presence: true
   validates :check_out_date, presence: true
   validate :in_out_check

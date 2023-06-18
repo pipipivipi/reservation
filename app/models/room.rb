@@ -3,6 +3,11 @@ class Room < ApplicationRecord
   has_many :reservations, dependent: :destroy
   has_one_attached :image
 
+  validates :name, presence: true
+  validates :introduction, presence: true
+  validates :price, numericality: true, presence: true
+  validates :location, presence: true
+
   before_create :default_image
 
   def default_image
