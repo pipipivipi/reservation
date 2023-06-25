@@ -17,4 +17,6 @@ Rails.application.routes.draw do
 
   post "/rooms/:id" => "reservations#create"
   patch "/rooms/:id", to: "reservations#create"
+
+  root 'rooms#index'
 end

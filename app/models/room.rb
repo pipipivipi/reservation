@@ -7,6 +7,7 @@ class Room < ApplicationRecord
   validates :introduction, presence: true
   validates :price, numericality: true, presence: true
   validates :location, presence: true
+  validates :price,  numericality: {greater_than_or_equal_to: 1}, presence: true
 
   before_create :default_image
 

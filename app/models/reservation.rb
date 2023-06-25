@@ -12,7 +12,8 @@ class Reservation < ApplicationRecord
   validate :in_out_check
 
   def in_out_check
-    errors.add(:check_out_date, "はチェックインより前の日付は選択できません") unless
+    return false if check_in_date.blank? || check_out_date.blank?
+    record.errors.add(:check_out_date, "はチェックインより前の日付は選択できません") unless
     self.check_in_date < self.check_out_date
   end
 end
