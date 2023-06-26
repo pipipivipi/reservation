@@ -1,0 +1,29 @@
+<%= render "shared/header" %>
+
+<div class="container">
+  <h3>アカウント</h3>
+
+  <article>
+    <div class="side_menu">
+      <p>アカウント</p>
+      <%= link_to "プロフィール", users_profile_path %>
+    </div>
+    <div class="account_container">
+      <table class="table table-striped table-hover">
+        <tr>
+          <th scope="col">メールアドレス</th>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th scope="col">パスワード</th>
+          <td>*********</td>
+        </tr>
+      </table>
+    </div>
+  </article>
+  <div>
+    <ul>
+      <a href="/users/edit" class="btn btn-outline-secondary">編集</a>
+    </ul>
+  </div>
+</div>

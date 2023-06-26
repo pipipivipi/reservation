@@ -1,0 +1,54 @@
+<%= render "shared/header" %>
+
+<div class="container">
+  <h4>施設詳細</h4>
+
+  <div class="room_image">
+    <%= image_tag @room.image.variant(resize: "300x300>").processed %>
+  </div>
+
+  <%= form_with model: @reservation do |f| %>
+  <table class="table table-striped table-hover">
+    <tr>
+      <th>施設名</th>
+      <td><%= @room.name %></td>
+    </tr>
+    <tr>
+      <th>施設紹介</th>
+      <td><%= @room.introduction %></td>
+    </tr>
+    <tr>
+      <th>料金</th>
+      <td><%= @room.price %></td>
+    </tr>
+    <tr>
+      <th>所在地</th>
+      <td><%= @room.location %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :check_in_date, "チェックイン" %></th>
+      <td><%= f.date_field :check_in_date %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :check_out_date, "チェックアウト" %></th>
+      <td><%= f.date_field :check_out_date %></td>
+      </tr>
+    <tr>
+      <th><%= f.label :number_of_people, "人数" %></th>
+      <td><%= f.number_field :number_of_people %></td>
+    </tr>
+  </table>
+
+  <div>
+    <ul>
+      <%= f.submit "予約する", class: "btn btn-outline-success" %>
+    </ul>
+  </div>
+
+  <div>
+    <ul>
+      <%= link_to "一覧に戻る", :back, class: "btn btn-outline-secondary" %>
+    </ul>
+  </div>
+  <% end %>
+</div>

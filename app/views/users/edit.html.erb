@@ -1,0 +1,33 @@
+<%= render "shared/header" %>
+
+<article>
+  <div class="side_menu">
+    <%= link_to "アカウント", '/users/registrations/edit' %></p>
+    <p>プロフィール</p>
+  </div>
+
+  <div class="container">
+    <%= form_with model: @user do |f| %>
+    <table class="table">
+      <tr>
+        <th scope="col"><%= f.label :avatar, "アバター" %></th>
+        <td><%= f.file_field :avatar %></td>
+      </tr>
+      <tr>
+        <th scope="col"><%= f.label :name, "ユーザー名" %></th>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <th scope="col"><%= f.label :profile, "プロフィール" %></th>
+        <td><%= f.text_area :profile %></td>
+      </tr>
+    </table>
+    <div>
+      <ul>
+        <%= f.submit "更新", class: "btn btn-outline-success" %><br>
+        <%= link_to "キャンセル", '/users/profile', class: "btn btn-outline-secondary" %>
+      </ul>
+    </div>
+    <% end %>
+  </div> 
+  </article>
